@@ -264,6 +264,7 @@ jobs:
                 name: Save
                 command: |
                   IMAGE_NAME="<<parameters.registry>>/<<parameters.repo>>/<<parameters.docker_name>>:<<parameters.save_image_tag>>"
+                  docker buildx create --use buildx-build
                   docker save -o /tmp/docker_images/<<parameters.docker_name>>.tar $IMAGE_NAME
             - persist_to_workspace:
                 root: /tmp/docker_images
